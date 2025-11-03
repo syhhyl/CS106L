@@ -14,7 +14,7 @@
 #include <string>
 #include <unordered_set>
 
-std::string kYourName = "STUDENT TODO"; // Don't forget to change this!
+std::string kYourName = "S Y"; // Don't forget to change this!
 
 /**
  * Takes in a file name and returns a set containing all of the applicant names as a set.
@@ -27,8 +27,29 @@ std::string kYourName = "STUDENT TODO"; // Don't forget to change this!
  * below it) to use a `std::unordered_set` instead. If you do so, make sure
  * to also change the corresponding functions in `utils.h`.
  */
-std::set<std::string> get_applicants(std::string filename) {
+std::unordered_set<std::string> get_applicants(std::string filename) {
   // STUDENT TODO: Implement this function.
+  std::ifstream ifs(filename);
+  std::unordered_set<std::string> name_set;
+  std::string line;
+  while (std::getline(ifs, line) && !line.empty()) {
+    name_set.insert(line);
+
+  }
+  // for (auto it : name_set) {
+  //   std::cout << it << '\n';
+  // }
+  return name_set;
+}
+
+
+bool isSame(const std::string& name1, const std::string& name2) {
+  if (name1[0] == name2[0]) {
+    size_t pos1 = name1.find(" ") ;
+    size_t pos2 = name2.find(" ") ;
+    return name1[++pos1] == name2[++pos2];
+  }
+  return false;
 }
 
 /**
@@ -39,8 +60,16 @@ std::set<std::string> get_applicants(std::string filename) {
  * @param students  The set of student names.
  * @return          A queue containing pointers to each matching name.
  */
-std::queue<const std::string*> find_matches(std::string name, std::set<std::string>& students) {
+std::queue<const std::string*> find_matches(std::string name, std::unordered_set<std::string>& students) {
   // STUDENT TODO: Implement this function.
+  std::queue<const std::string *> q;
+  for (auto n = students.begin(); n != students.end(); ++n) {
+    if (isSame(name, *n)) {
+      q.push(&(*n)); 
+    } 
+  }
+  
+  return q;
 }
 
 /**
@@ -55,6 +84,18 @@ std::queue<const std::string*> find_matches(std::string name, std::set<std::stri
  */
 std::string get_match(std::queue<const std::string*>& matches) {
   // STUDENT TODO: Implement this function.
+  while (!matches.empty()) {
+    std::string name = *matches.front();
+    matches.pop();
+    if (isSame(kYourName, name)) {
+      return name;
+    }
+    
+  }
+  
+  
+  return "NO MATCHES FOUND.";
+  
 }
 
 /* #### Please don't remove this line! #### */
