@@ -1,0 +1,29 @@
+{
+  "files.associations": {
+    "type_traits": "cpp",
+    "__verbose_abort": "cpp",
+    "cmath": "cpp",
+    "cstddef": "cpp",
+    "cstdint": "cpp",
+    "cstdio": "cpp",
+    "cstdlib": "cpp",
+    "cstring": "cpp",
+    "cwchar": "cpp",
+    "cwctype": "cpp",
+    "initializer_list": "cpp",
+    "iosfwd": "cpp",
+    "iostream": "cpp",
+    "limits": "cpp",
+    "new": "cpp",
+    "stdexcept": "cpp",
+    "string": "cpp",
+    "string_view": "cpp",
+    "typeinfo": "cpp",
+    "ios": "cpp",
+    "istream": "cpp",
+    "streambuf": "cpp",
+    "variant": "cpp",
+    "cctype": "cpp",
+    "algorithm": "cpp"
+  }
+}
